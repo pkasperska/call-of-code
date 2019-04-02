@@ -1,0 +1,104 @@
+[
+    {
+    "country": "PL",
+    "name": "Żary",
+    "cityLat": "51.64205",
+    "cityLng": "15.13727"
+},
+{
+    "country": "PL",
+    "name": "Zielona Góra",
+    "cityLat": "51.93548",
+    "cityLng": "15.50643"
+},
+{
+    "country": "PL",
+    "name": "Żagań",
+    "cityLat": "51.61759",
+    "cityLng": "15.31486"
+},
+{
+    "country": "PL",
+    "name": "Nowa Sól",
+    "cityLat": "51.80333",
+    "cityLng": "15.71702"
+},
+{
+    "country": "PL",
+    "name": "Gorzów Wielkopolski",
+    "cityLat": "52.73679",
+    "cityLng": "15.22878"
+},
+{
+    "country": "PL",
+    "name": "Legnica",
+    "cityLat": "51.21006",
+    "cityLng": "16.1619"
+},
+{
+    "country": "PL",
+    "name": "Poznań",
+    "cityLat": "52.40692",
+    "cityLng": "16.92993"
+},
+{
+    "country": "PL",
+    "name": "Wrocław",
+    "cityLat": "51.1",
+    "cityLng": "17.03333"
+},
+{
+    "country": "PL",
+    "name": "Warszawa",
+    "cityLat": "52.22977",
+    "cityLng": "21.01178"
+},
+{
+    "country": "PL",
+    "name": "Łódź",
+    "cityLat": "51.77058",
+    "cityLng": "19.47395"
+},
+{
+    "country": "PL",
+    "name": "Białystok",
+    "cityLat": "53.13333",
+    "cityLng": "23.16433"
+},
+{
+    "country": "PL",
+    "name": "Kraków",
+    "cityLat": "50.06143",
+    "cityLng": "19.93658"
+},
+{
+    "country": "PL",
+    "name": "Lublin",
+    "cityLat": "51.25",
+    "cityLng": "22.56667"
+},
+{
+    "country": "PL",
+    "name": "Szczecin",
+    "cityLat": "53.42894",
+    "cityLng": "14.55302"
+},
+{
+    "country": "PL",
+    "name": "Gdynia",
+    "cityLat": "54.51889",
+    "cityLng": "18.53188"
+},
+{
+    "country": "PL",
+    "name": "Gdańsk",
+    "cityLat": "54.35205",
+    "cityLng": "18.64637"
+},
+{
+    "country": "PL",
+    "name": "Katowice",
+    "cityLat": "50.25841",
+    "cityLng": "19.02754"
+}
+]
