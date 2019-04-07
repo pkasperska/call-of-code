@@ -1,12 +1,22 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import _App from "./App";
+import { Connector, subscribe } from "mqtt-react";
+import { getNearestCity } from "./api.service";
+import { getGps } from "./gps.provider";
 
-ReactDOM.render(<App />, document.getElementById('root'));
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+(function init() {
+  getGps().then(({ coords }) => {
+    const { latitude, longitude } = coords;
+    getNearestCity(longitude, latitude).then(({ nearestCity }) => {
+      const App = subscribe({ topic: nearestCity })(_App);
+      ReactDOM.render(
+        <Connector mqttProps="mqtt://192.168.0.242:1884">
+          <App latitude={latitude} longitude={longitude} topic={nearestCity}/>
+        </Connector>,
+        document.getElementById("root")
+      );
+    });
+  });
+})();
