@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
+import "./index.scss";
 import _App from "./App";
 import { Connector, subscribe } from "mqtt-react";
 import { getNearestCity } from "./api.service";

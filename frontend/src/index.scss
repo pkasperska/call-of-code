@@ -1,0 +1,6 @@
+@import "./variables";
+
+body {
+  @include font-and-bgc();
+  margin: 0;
+}

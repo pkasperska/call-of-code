@@ -1,7 +1,10 @@
 import React, { Component, Fragment } from "react";
-import "./App.css";
+import "./App.scss";
 
 import Publisher from './Publisher'
+import Header from "./Components/Header/Header";
+import MessageList from "./Components/MessageList/MessageList";
+import NewMessageButton from "./Components/NewMessageButton/NewMessageButton";
 
 class App extends Component {
     renderGpsLocations() {
@@ -12,10 +15,14 @@ class App extends Component {
   render() {
     return (
       <Fragment>
-        <header className="App-header">
+
+        <Header />
+        <MessageList />
+        {/* <body className="App-body">
             <Fragment>Twoja pozycja to: {this.renderGpsLocations()} Najbliższe miasto to: {this.props.topic}</Fragment>
             <Publisher topic={this.props.topic} mqtt={this.props.mqtt}></Publisher>
-        </header>
+        </body> */}
+        <NewMessageButton/>
       </Fragment>
     );
   }

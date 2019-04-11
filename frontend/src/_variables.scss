@@ -1,0 +1,14 @@
+$primary-color: #484543;
+$secondary-color: #52BAE7;
+$tertiary-color: #3D3A39;
+$font-button: 'Roboto Condensed', sans-serif;
+
+@mixin font-and-bgc {
+    font-family: 'Roboto', sans-serif;
+    color: #E7D1D1;  
+    background-color: $primary-color;  
+  }
+
+  :export {
+    secondaryColor: $secondary-color;
+  }

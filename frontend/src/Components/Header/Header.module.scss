@@ -1,0 +1,14 @@
+@import "../../variables";
+
+.appHeader {
+    background-color: $secondary-color;
+    color: #ffffff;
+    padding: 1rem;
+    max-height: 5em;
+    width: 100%;
+    font-size: 2em;
+    font-family: 'Major Mono Display', monospace;
+    text-align: center;
+    align-items: center;
+    position: fixed;
+  }
