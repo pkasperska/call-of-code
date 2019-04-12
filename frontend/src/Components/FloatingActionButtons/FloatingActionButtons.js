@@ -2,6 +2,8 @@ import React from 'react';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import styleVariables from "../../_variables.scss";
+import FullScreenDialog from '../FullScreenDialog/FullScreenDialog';
+
 
 const style = {
     margin: 0,
@@ -13,11 +15,11 @@ const style = {
     background: styleVariables.secondaryColor
 };
   
-  function FloatingActionButtons() {
-    return (
+  const FloatingActionButtons = (props) => {
+        return (
       <div>
-        <Fab color="primary" aria-label="Add" style={style}>
-          <AddIcon />
+        <Fab color="primary" aria-label="Add" style={style} {...props}>
+          <AddIcon/>
         </Fab>
       </div>
     );

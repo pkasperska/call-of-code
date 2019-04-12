@@ -1,10 +1,12 @@
 import React, { Component, Fragment } from "react";
 import "./App.scss";
 
-import Publisher from './Publisher'
+//import Publisher from './Publisher'
 import Header from "./Components/Header/Header";
 import MessageList from "./Components/MessageList/MessageList";
-import NewMessageButton from "./Components/NewMessageButton/NewMessageButton";
+//import NewMessageButton from "./Components/NewMessageButton/NewMessageButton";
+// import FullScreenDialog from "./Components/FullScreenDialog/FullScreenDialog";
+// import FloatingActionButtons from "./Components/FloatingActionButtons/FloatingActionButtons";
 
 class App extends Component {
     renderGpsLocations() {
@@ -22,7 +24,6 @@ class App extends Component {
             <Fragment>Twoja pozycja to: {this.renderGpsLocations()} Najbliższe miasto to: {this.props.topic}</Fragment>
             <Publisher topic={this.props.topic} mqtt={this.props.mqtt}></Publisher>
         </body> */}
-        <NewMessageButton/>
       </Fragment>
     );
   }

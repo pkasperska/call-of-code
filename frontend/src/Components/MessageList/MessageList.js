@@ -1,5 +1,8 @@
 import React from 'react';
 import styles from './MessageList.module.scss';
+import FloatingActionButtons from '../FloatingActionButtons/FloatingActionButtons';
+import FullScreenDialog from '../FullScreenDialog/FullScreenDialog';
+
 
 const MessageList = () => {
     return(
@@ -18,6 +21,9 @@ const MessageList = () => {
             <p className={`${styles.message}`}>Marshmallow jelly gingerbread chocolate candy sweet roll lemon drops pudding...</p>
             <h1 className={`${styles.messageTitle}`}>WYPADEK NA BATOREGO</h1>
             <p className={`${styles.message}`}>Marshmallow jelly gingerbread chocolate candy sweet roll lemon drops pudding...</p>
+            
+            <FloatingActionButtons/>
+                <FullScreenDialog />
         </div>
     )
 }
