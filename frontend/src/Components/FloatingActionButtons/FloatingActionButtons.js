@@ -1,8 +1,6 @@
 import React from 'react';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
-import styleVariables from "../../_variables.scss";
-import FullScreenDialog from '../FullScreenDialog/FullScreenDialog';
 
 
 const style = {
@@ -11,8 +9,7 @@ const style = {
     right: 20,
     bottom: 20,
     left: 'auto',
-    position: 'fixed',
-    background: styleVariables.secondaryColor
+    position: 'fixed'
 };
   
   const FloatingActionButtons = (props) => {
