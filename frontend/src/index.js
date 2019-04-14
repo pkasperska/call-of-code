@@ -21,8 +21,10 @@ const theme = createMuiTheme({
     contrastThreshold: 3,
     tonalOffset: 0.2,
     type: 'dark'
-  }
-
+  },
+  typography: {
+    useNextVariants: true,
+  },
 });
 
 (function init() {
@@ -38,6 +40,10 @@ const theme = createMuiTheme({
         </MuiThemeProvider>,
         document.getElementById("root")
       );
+    })
+    .catch(e => {
+      ReactDOM.render(<div>Error while conecting to server</div>, 
+        document.getElementById("root"))
     });
   });
 })();

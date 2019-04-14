@@ -3,7 +3,6 @@
 .appMessageList {
     @include font-and-bgc();
     text-align: justify;
-    padding-top: 4em;
   
     .messageTitle {
       font-size: 1em;
@@ -16,7 +15,7 @@
       padding: 0 3em 0.5em 3em;
       margin: 0;
       }
-    .messageData {
+    .messageDate {
       font-size: 0.9em;
       background-color: $tertiary-color;
       border-bottom: 1px solid #D0CFCF;

@@ -3,12 +3,15 @@ $secondary-color: #039be5;
 $tertiary-color: #3D3A39;
 $font-button: 'Roboto Condensed', sans-serif;
 
+$headerHeight: 3.5rem;
+
 @mixin font-and-bgc {
     font-family: 'Roboto', sans-serif;
-    color: #E7D1D1;  
+    color: #ffffff;  
     background-color: $primary-color;  
   }
 
   :export {
     secondaryColor: $secondary-color;
+    headerHeight: $headerHeight
   }

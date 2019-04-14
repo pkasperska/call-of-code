@@ -8,3 +8,18 @@
 body {
   @include font-and-bgc();
 }
+
+.app-content {
+  margin-top: $headerHeight;
+}
+
+.leaflet-container {
+  height: 40%;
+  width: 100%; 
+  align-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 1em 1.5em;
+  position: absolute;
+  background-color: $tertiary-color;
+}

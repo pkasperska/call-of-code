@@ -1,0 +1,35 @@
+@import "../../variables";
+
+.messageBox {
+  @include font-and-bgc();
+
+  .messageDate {
+    font-size: 0.8em;
+    padding: 1em 1.5em;
+    margin: 0;
+  }
+  .messageTitle {
+    font-size: 1.5em;
+    background-color: $tertiary-color;
+    padding: 0.5em 1.5em;
+    margin: 0;
+    text-align: justify;
+    
+  }
+  .message {
+    font-size: 1em;
+    margin-top: 1em;
+    text-align: justify;
+    padding: 1.5em;
+    margin: 0;
+  }
+  .map {
+    font-size: 1em;
+    margin-top: 1em;
+    text-align: justify;
+    padding: 1em 1.5em;
+    margin: 0;
+    align-content: center;
+
+  }
+}

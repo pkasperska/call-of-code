@@ -19,7 +19,7 @@ const style = {
   },
   flex: {
     flex: 1
-  }
+  },
 };
 function renderTransition(props) {
   return <Slide direction="up" {...props} />;
