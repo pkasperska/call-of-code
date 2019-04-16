@@ -1,26 +1,64 @@
 @import "../../variables";
 
 .appMessageList {
-    @include font-and-bgc();
+  @include font-and-bgc();
+  text-align: justify;
+
+  .messageContainer {
+    display: flex;
+    flex-flow: row;
+    border-bottom: 1px solid #d0cfcf;
+  }
+
+  .messageTitle {
+    font-size: 1em;
+    margin: 0;
+    padding-bottom: 0.5em;
     text-align: justify;
+  }
+  .message {
+    display: flex;
+    flex: 10;
+    flex-flow: column;
+    justify-content: center;
+    font-size: 0.8em;
+    padding: 0.5em 0;
+    margin: 0;
+  }
+  .messagePreview {
+    font-size: 0.8em;
+    margin: 0;
+  }
   
-    .messageTitle {
-      font-size: 1em;
-      padding: 0 2.5em;
-      margin-bottom: 0.5em
+  .messageDate {
+    font-size: 0.9em;
+    background-color: $tertiary-color;
+    border-bottom: 1px solid #d0cfcf;
+    margin: 0;
+    padding: 0.5em 1em;
+    max-height: 5em;
   }
-    .message {
-      font-size: 0.8em;
-      border-bottom: 1px solid #D0CFCF;
-      padding: 0 3em 0.5em 3em;
-      margin: 0;
-      }
-    .messageDate {
-      font-size: 0.9em;
-      background-color: $tertiary-color;
-      border-bottom: 1px solid #D0CFCF;
-      margin: 0;
-      padding: 0.5em 1em;
-      max-height: 5em;
-    }
+}
+.messageTime {
+  font-size: 0.7em;
+  margin: 0;
+  padding: 0.5em 0.5em;
+}
+
+.newMessageIndicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  img {
+    color: $secondary-color;
+    width: 2em;
+    height: 2em;
   }
+}
+.time {
+  display: flex;
+  flex-flow: column;
+  flex: 1;
+  align-items: center;
+}

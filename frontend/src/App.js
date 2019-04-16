@@ -22,19 +22,19 @@ class App extends Component {
       <Fragment>
         <Header />
         <main className="app-content">
-          {/* <MessageList />
+          <MessageList />
           <FloatingActionButtons
             onClick={() => this.setState({ isModalDialogOpened: true })}
           />
           <FullScreenDialog
             open={this.state.isModalDialogOpened}
             onClose={() => this.setState({ isModalDialogOpened: false })}
-          />  */}
+          /> 
           {/* <body className="App-body">
               <Fragment>Twoja pozycja to: {this.renderGpsLocations()} Najbliższe miasto to: {this.props.topic}</Fragment>
               <Publisher topic={this.props.topic} mqtt={this.props.mqtt}></Publisher>
           </body> */}
-        <Message/>
+        {/* <Message/> */}
         </main>
       </Fragment>
     );
