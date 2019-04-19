@@ -8,7 +8,7 @@ function getNearestCity(currentPosition) {
   for (city of cities) {
     const cityName = city.name;
     const distanceInKm = countDistance(city, currentPosition)
-   
+    
     if (distanceInKm < 10) {
       return cityName;
     }

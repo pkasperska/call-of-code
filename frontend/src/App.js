@@ -1,11 +1,9 @@
 import React, { Component, Fragment } from "react";
 import "./App.scss";
-//import Publisher from './Publisher'
 import Header from "./Components/Header/Header";
 import MessageList from "./Components/MessageList/MessageList";
 import FloatingActionButtons from "./Components/FloatingActionButtons/FloatingActionButtons";
 import FullScreenDialog from "./Components/FullScreenDialog/FullScreenDialog";
-import Message from "./Components/Message/Message";
 
 class App extends Component {
   state = {
@@ -29,12 +27,7 @@ class App extends Component {
           <FullScreenDialog
             open={this.state.isModalDialogOpened}
             onClose={() => this.setState({ isModalDialogOpened: false })}
-          /> 
-          {/* <body className="App-body">
-              <Fragment>Twoja pozycja to: {this.renderGpsLocations()} Najbliższe miasto to: {this.props.topic}</Fragment>
-              <Publisher topic={this.props.topic} mqtt={this.props.mqtt}></Publisher>
-          </body> */}
-        {/* <Message/> */}
+          />
         </main>
       </Fragment>
     );

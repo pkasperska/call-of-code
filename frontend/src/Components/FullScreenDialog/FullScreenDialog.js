@@ -12,6 +12,7 @@ import Slide from "@material-ui/core/Slide";
 import TextField from "@material-ui/core/TextField";
 import classNames from "classnames";
 import styles from "./FullScreenDialog.module.scss";
+import { mqtt, topic } from "../../providers/mqtt.provider";
 
 const style = {
   appBar: {
@@ -25,14 +26,24 @@ function renderTransition(props) {
   return <Slide direction="up" {...props} />;
 }
 class FullScreenDialog extends React.Component {
+
+  state = {
+    title: "",
+    message: "",
+  }
+
   static propTypes = {
     classes: PropTypes.object.isRequired
   };
 
   handleSubmit = event => {
-    console.log(event.value);
     event.preventDefault();
+    mqtt.publish(topic, JSON.stringify(this.state))
+    console.log( topic);
   };
+  
+  handleChange = name => event => this.setState({ [name]: event.target.value });
+  
 
   render() {
     const { classes } = this.props;
@@ -69,6 +80,8 @@ class FullScreenDialog extends React.Component {
               className={classNames(classes.textField, classes.dense)}
               margin="dense"
               fullWidth
+              value={this.state.title}
+              onChange={this.handleChange('title')}
             />
             <TextField
               id="standard-multiline-static"
@@ -76,8 +89,10 @@ class FullScreenDialog extends React.Component {
               multiline
               rows="10"
               className={classes.textField}
-              fullWidth
               margin="normal"
+              fullWidth
+              value={this.state.message}
+              onChange={this.handleChange('message')}
             />
           </div>
         </form>

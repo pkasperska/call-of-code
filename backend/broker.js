@@ -14,10 +14,6 @@ server.on('ready', function () {
     console.log('Mosca server is up and running');
     });
 
-server.on('clientConnected', function (client) {
-    console.log('Client Connected:', client.id);
-    });
-
 server.on('published', function (packet, client) {
     console.log('Published:', (packet.payload).toString());
 });

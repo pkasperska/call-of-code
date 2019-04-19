@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.4",
-    "mosca": "^2.8.3"
+    "mosca": "^2.8.3",
+    "uuid": "^3.3.2"
   }
 }
