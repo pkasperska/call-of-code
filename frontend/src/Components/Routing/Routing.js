@@ -12,7 +12,7 @@ const AppRouter = ({ latitude, longitude, topic, mqtt, data }) => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path='/' exact component={ () => <App latitude={51.93548} longitude={15.50643} data={data}/> } />
+        <Route path='/' exact component={ () => <App latitude={latitude} longitude={longitude} data={data}/> } />
         <Route path="/message" component={Message} />
       </Switch>
     </BrowserRouter>

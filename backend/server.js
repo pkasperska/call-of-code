@@ -4,16 +4,16 @@ const cities = require('./cities.json')
 
 const toRadians = num => num * Math.PI / 180;
 
-function getNearestCity(currentPosition) {
-  for (city of cities) {
-    const cityName = city.name;
-    const distanceInKm = countDistance(city, currentPosition)
-    
-    if (distanceInKm < 10) {
-      return cityName;
-    }
-  }
+function pickCityForLocation(currentPosition, cities) {
+  const calculatedCitiesWithDistances = cities.map(city => ({city, distance: countDistance(city, currentPosition)}));
+  const nearCity = calculatedCitiesWithDistances.reduce((nearestCityWithDistance, cityWithDistance) => {
+    return nearestCityWithDistance.distance < cityWithDistance.distance ? 
+      nearestCityWithDistance : cityWithDistance
+  });
+  console.log(calculatedCitiesWithDistances)
+  return nearCity.city.name;
 }
+
 function countDistance(city, currentPosition) {
   const earthRadiusInKm = 6371;
   const {latitude, longitude} = currentPosition;
@@ -44,6 +44,6 @@ api.use(function (req, res, next) {
   
   
 api.get("/city", (request, response) => {
-    const nearestCity = getNearestCity(request.query);
+    const nearestCity = pickCityForLocation(request.query, cities);
     response.send({nearestCity});
 });
