@@ -5,6 +5,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import variables from "../../_variables.scss";
+import { topic } from "../../providers/mqtt.provider";
 
 const style = {
   root: {
@@ -36,7 +37,7 @@ class Header extends React.Component {
             color="inherit"
             className={this.props.classes.typography}
           >
-            Info z drogi
+            { topic }
           </Typography>
         </Toolbar>
       </AppBar>

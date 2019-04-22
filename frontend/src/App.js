@@ -9,25 +9,22 @@ class App extends Component {
   state = {
     isModalDialogOpened: false
   };
-
-  renderGpsLocations() {
-    const { latitude, longitude } = this.props;
-    return <span>{`${latitude}, ${longitude}`}</span>;
-  }
-
+  
   render() {
     return (
       <Fragment>
         <Header />
         <main className="app-content">
-          <MessageList />
+          <MessageList data={this.props.data}/>
           <FloatingActionButtons
             onClick={() => this.setState({ isModalDialogOpened: true })}
-          />
+            />
           <FullScreenDialog
             open={this.state.isModalDialogOpened}
             onClose={() => this.setState({ isModalDialogOpened: false })}
-          />
+            longitude={this.props.longitude}
+            latitude={this.props.latitude}
+            />
         </main>
       </Fragment>
     );

@@ -29,18 +29,23 @@ class FullScreenDialog extends React.Component {
 
   state = {
     title: "",
-    message: "",
+    message: ""
   }
 
   static propTypes = {
     classes: PropTypes.object.isRequired
   };
 
+  
   handleSubmit = event => {
     event.preventDefault();
-    mqtt.publish(topic, JSON.stringify(this.state))
-    console.log( topic);
-  };
+    mqtt.publish(topic, JSON.stringify({...this.state, 
+      longitude: this.props.longitude, 
+      latitude: this.props.latitude,
+      date: (new Date()).toLocaleDateString(),
+      time: (new Date()).toLocaleTimeString(),
+    }))
+  }
   
   handleChange = name => event => this.setState({ [name]: event.target.value });
   

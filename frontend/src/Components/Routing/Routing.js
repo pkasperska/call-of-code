@@ -5,14 +5,14 @@ import App from "../../App";
 import { setMqtt, setTopic } from "../../providers/mqtt.provider"
 
 
-const AppRouter = ({ latitude, longitude, topic, mqtt }) => {
+const AppRouter = ({ latitude, longitude, topic, mqtt, data }) => {
   setMqtt(mqtt);
   setTopic(topic);
 
   return (
     <BrowserRouter>
       <Switch>
-        <Route path='/' exact component={ () => <App latitude={latitude} longitude={longitude} /> } />
+        <Route path='/' exact component={ () => <App latitude={51.93548} longitude={15.50643} data={data}/> } />
         <Route path="/message" component={Message} />
       </Switch>
     </BrowserRouter>
