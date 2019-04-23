@@ -88,5 +88,17 @@
     "name": "Katowice",
     "cityLat": "50.25841",
     "cityLng": "19.02754"
+},
+{
+    "country": "PL",
+    "name": "Warszawa",
+    "cityLat": "52.22977",
+    "cityLng": "21.01178"
+},
+{
+    "country": "PL",
+    "name": "Białystok",
+    "cityLat": "53.13333",
+    "cityLng": "23.16433"
 }
 ]
