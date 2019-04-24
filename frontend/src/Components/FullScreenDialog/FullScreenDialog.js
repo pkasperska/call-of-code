@@ -25,29 +25,56 @@ const style = {
 function renderTransition(props) {
   return <Slide direction="up" {...props} />;
 }
+
+const initialState = {
+    title: "",
+    message: "",
+    titleError: "",
+    messageError: ""
+}
 class FullScreenDialog extends React.Component {
 
-  state = {
-    title: "",
-    message: ""
-  }
+  state = initialState;
 
   static propTypes = {
     classes: PropTypes.object.isRequired
   };
 
-  
   handleSubmit = event => {
     event.preventDefault();
+    const isValid = this.validate()
+    const date = new Date();
+
+    if (isValid) {
+    this.setState(initialState);
     mqtt.publish(topic, JSON.stringify({...this.state, 
       longitude: this.props.longitude, 
       latitude: this.props.latitude,
-      date: (new Date()).toLocaleDateString(),
-      time: (new Date()).toLocaleTimeString(),
+      date: this.getDateString(date),
+      time: `${date.getHours()}:${date.getMinutes()}`,
     }))
+  }
   }
   
   handleChange = name => event => this.setState({ [name]: event.target.value });
+
+  validate = () => {
+    const titleError = !this.state.title ? "Podaj tytuł wiadomości" : "";
+    const messageError = !this.state.message ? "Podaj treść wiadomości" : "";
+
+    if (titleError || messageError) {
+      this.setState({titleError, messageError})
+      return false;
+    }
+    return true;
+  }
+
+  getDateString = (date) => {
+      const month = date.getMonth() + 1;
+      return `${date.getDate()}.${
+        month >= 10 ? month : "0" + month
+      }.${date.getFullYear()}`;
+    };
   
 
   render() {
@@ -87,7 +114,9 @@ class FullScreenDialog extends React.Component {
               fullWidth
               value={this.state.title}
               onChange={this.handleChange('title')}
+              required
             />
+            <div className={styles.error}>{this.state.titleError}</div>
             <TextField
               id="standard-multiline-static"
               label="Treść wiadomości"
@@ -98,7 +127,9 @@ class FullScreenDialog extends React.Component {
               fullWidth
               value={this.state.message}
               onChange={this.handleChange('message')}
+              required
             />
+            <div className={styles.error}>{this.state.messageError}</div>
           </div>
         </form>
       </Dialog>
