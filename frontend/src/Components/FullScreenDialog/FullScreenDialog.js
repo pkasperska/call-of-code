@@ -51,7 +51,7 @@ class FullScreenDialog extends React.Component {
       longitude: this.props.longitude, 
       latitude: this.props.latitude,
       date: this.getDateString(date),
-      time: `${date.getHours()}:${date.getMinutes()}`,
+      time: this.getTimeString(date)
     }))
   }
   }
@@ -76,6 +76,11 @@ class FullScreenDialog extends React.Component {
       }.${date.getFullYear()}`;
     };
   
+  getTimeString = (date) => {
+    const minutes = date.getMinutes();
+    return `${date.getHours()}:${
+    minutes >= 9 ? minutes : "0" + minutes}`
+  }
 
   render() {
     const { classes } = this.props;
@@ -115,6 +120,7 @@ class FullScreenDialog extends React.Component {
               value={this.state.title}
               onChange={this.handleChange('title')}
               required
+              inputProps={{ maxLength: 27 }}
             />
             <div className={styles.error}>{this.state.titleError}</div>
             <TextField

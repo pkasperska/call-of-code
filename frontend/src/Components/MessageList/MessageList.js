@@ -4,9 +4,6 @@ import dot from "./circle-medium.png";
 import { Link } from "react-router-dom";
 
 class MessageList extends Component {
-  state = {
-    showIndicator: true
-  };
 
   render() {
     const convertData = data => {
@@ -34,7 +31,7 @@ class MessageList extends Component {
     const isToday = date => date === getDate(new Date());
     const isYesterday = date =>
       date === getDate(new Date(Date.now() - 24 * 60 * 60 * 1000));
-    const { showIndicator } = this.state;
+      
     return (
       <div className={styles.appMessageList}>
         {!this.props.data.length && (
@@ -58,13 +55,7 @@ class MessageList extends Component {
                 <div className={styles.messageContainer}>
                   <div
                     className={styles.newMessageIndicator}
-                    onClick={() =>
-                      this.setState({ showIndicator: !showIndicator })
-                    }
                   >
-                    {showIndicator ? (
-                      <img src={dot} alt="Unreaded message" />
-                    ) : null}
                   </div>
                   <div className={styles.message}>
                     <h2 className={styles.messageTitle}>

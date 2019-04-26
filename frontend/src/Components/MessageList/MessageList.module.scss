@@ -50,12 +50,12 @@
   align-items: center;
   justify-content: center;
   flex: 1;
-  img {
-    color: $secondary-color;
-    width: 2em;
-    height: 2em;
+    img {
+      color: $secondary-color;
+      width: 2em;
+      height: 2em;
+    }
   }
-}
 .time {
   display: flex;
   flex-flow: column;
