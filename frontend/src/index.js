@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { Connector, subscribe } from "mqtt-react";
 import { getGps } from "./providers/gps.provider"
 import { getNearestCity } from "./api.service";
+import { getInitialMessages } from "./providers/initialMessages.provider";
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import red from '@material-ui/core/colors/red';
 import "./index.scss";
@@ -32,6 +33,7 @@ const theme = createMuiTheme({
     const { latitude, longitude } = coords;
     getNearestCity(longitude, latitude).then(({ nearestCity }) => {
       const AppRouter = subscribe({ topic: nearestCity })(_AppRouter);
+      getInitialMessages().then(() => {
       ReactDOM.render(
        <MuiThemeProvider theme={theme}>
         <Connector mqttProps="ws://localhost:1884">
@@ -46,4 +48,5 @@ const theme = createMuiTheme({
         document.getElementById("root"))
     });
   });
+});
 })();

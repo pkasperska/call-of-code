@@ -3,17 +3,17 @@ import "./App.scss";
 import MessageList from "./Components/MessageList/MessageList";
 import FloatingActionButtons from "./Components/FloatingActionButtons/FloatingActionButtons";
 import FullScreenDialog from "./Components/FullScreenDialog/FullScreenDialog";
-
+import { initialMessages } from "./providers/initialMessages.provider"
 
 class App extends Component {
   state = {
-    isModalDialogOpened: false,
+    isModalDialogOpened: false
   }
-  
+
   render() {
     return (
       <Fragment>
-          <MessageList data={this.props.data}/>
+          <MessageList data={[...initialMessages, ...this.props.data]}/>
           <FloatingActionButtons
             onClick={() => this.setState({ isModalDialogOpened: true })}
             />

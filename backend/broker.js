@@ -1,4 +1,5 @@
 const mosca = require('mosca');
+const { saveToDB } = require ('./db')
 
 const settings = {
     port: 1883,
@@ -6,7 +7,7 @@ const settings = {
         port: 1884,
         bundle: true,
         static: './'
-      }
+      },
 };
 
 const server = new mosca.Server(settings);
@@ -15,5 +16,9 @@ server.on('ready', function () {
     });
 
 server.on('published', function (packet, client) {
-    console.log('Published:', (packet.payload).toString());
+    try {
+        const payload = JSON.parse(packet.payload.toString());
+        {payload.hasOwnProperty('title') && saveToDB(payload)}
+    }
+    catch (err) {}
 });

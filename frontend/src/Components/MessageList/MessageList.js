@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styles from "./MessageList.module.scss";
-import dot from "./circle-medium.png";
 import { Link } from "react-router-dom";
+
 
 class MessageList extends Component {
 
@@ -37,40 +37,47 @@ class MessageList extends Component {
         {!this.props.data.length && (
           <div className={styles.noMessageInfo}> Brak wiadomości!</div>
         )}
-        {Object.keys(days).map(day => (
-          <React.Fragment key={day}>
-            <h2 className={styles.messageDate}>
-              {isToday(day) && "DZISIAJ"} {isYesterday(day) && "WCZORAJ"} {day}
-            </h2>
-            {days[day].map((message, index) => (
-              <Link
-                to={{
-                  pathname: `/message/${index}`,
-                  state: {
-                    data: message
-                  }
-                }}
-                key={index}
-              >
-                <div className={styles.messageContainer}>
-                  <div
-                    className={styles.newMessageIndicator}
-                  >
+        {
+          Object.keys(days)
+          .sort()
+          .reverse()
+          .map(day => (
+            <React.Fragment key={day}>
+              <h2 className={styles.messageDate}>
+                {isToday(day) && "DZISIAJ"} {isYesterday(day) && "WCZORAJ"} {day}
+              </h2>
+              {days[day]
+              .sort()
+              .reverse()
+              .map((message, index) => (
+                <Link
+                  to={{
+                    pathname: `/message/${index}`,
+                    state: {
+                      data: message
+                    }
+                  }}
+                  key={index}
+                >
+                  <div className={styles.messageContainer}>
+                    <div
+                      className={styles.newMessageIndicator}
+                    >
+                    </div>
+                    <div className={styles.message}>
+                      <h2 className={styles.messageTitle}>
+                        {message.title.toUpperCase()}
+                      </h2>
+                      <h1 className={styles.messagePreview}>{message.message}</h1>
+                    </div>
+                    <div className={styles.time}>
+                      <p className={styles.messageTime}>{message.time}</p>
+                    </div>
                   </div>
-                  <div className={styles.message}>
-                    <h2 className={styles.messageTitle}>
-                      {message.title.toUpperCase()}
-                    </h2>
-                    <h1 className={styles.messagePreview}>{message.message}</h1>
-                  </div>
-                  <div className={styles.time}>
-                    <p className={styles.messageTime}>{message.time}</p>
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </React.Fragment>
-        ))}
+                </Link>
+              ))}
+            </React.Fragment>
+          ))}
       </div>
     );
   }

@@ -1,6 +1,7 @@
 const express = require("express");
 const api = express();
 const cities = require("./cities.json");
+const { getFromDB } = require("./db");
 
 const toRadians = num => (num * Math.PI) / 180;
 
@@ -52,4 +53,9 @@ api.use(function(req, res, next) {
 api.get("/city", (request, response) => {
   const nearestCity = pickCityForLocation(request.query, cities);
   response.send({ nearestCity });
+});
+
+api.get("/database-messages", async (request, response) => {
+  const messagesDB = await getFromDB();
+  response.send(messagesDB);
 });
