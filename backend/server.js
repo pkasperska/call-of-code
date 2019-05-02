@@ -56,6 +56,6 @@ api.get("/city", (request, response) => {
 });
 
 api.get("/database-messages", async (request, response) => {
-  const messagesDB = await getFromDB();
+  const messagesDB = await getFromDB(request.query.nearestCity);
   response.send(messagesDB);
 });

@@ -16,9 +16,10 @@ server.on('ready', function () {
     });
 
 server.on('published', function (packet, client) {
+    console.log(packet.topic)
     try {
         const payload = JSON.parse(packet.payload.toString());
-        {payload.hasOwnProperty('title') && saveToDB(payload)}
+        {payload.hasOwnProperty('title') && saveToDB({...payload, city: packet.topic})}
     }
     catch (err) {}
 });

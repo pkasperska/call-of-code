@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-mongoose.connect("mongodb://localhost:27017/mqtt", { useNewUrlParser: true });
+mongoose.connect("mongodb://localhost:27017/mqtt", { useNewUrlParser: true, useCreateIndex: true });
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
@@ -15,19 +15,26 @@ const messageSchema = new Schema({
   longitude: Number,
   latitude: Number,
   date: String,
-  time: String
+  time: String,
+  city: String,
+  expireAt: {
+    type: Date,
+    default: Date.now,
+    index: { expires: '1d' },
+  },
 });
 
 const Message = mongoose.model("Message", messageSchema);
 
-const saveToDB = ({ title, message, longitude, latitude, date, time }) => {
+const saveToDB = ({ title, message, longitude, latitude, date, time, city }) => {
   const newMessage = new Message({
     title,
     message,
     longitude,
     latitude,
     date,
-    time
+    time,
+    city
   });
   newMessage.save(function(err) {
     console.log(`Saved ${newMessage}`)
@@ -35,9 +42,9 @@ const saveToDB = ({ title, message, longitude, latitude, date, time }) => {
   });
 };
 
-const getFromDB = () => {
+const getFromDB = (nearestCity) => {
   return new Promise((resolve, reject) => {
-    Message.find((err, response) => {
+    Message.find({city: nearestCity}, (err, response) => {
       err && reject(err);
       response && resolve(response);
   })

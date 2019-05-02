@@ -5,7 +5,7 @@ export function getNearestCity(longitude, latitude) {
     .then(response => response.json())
 }
 
-export function fetchInitialMessages() {
-    return fetch(`${config.apiUrl}/database-messages`)
+export function fetchInitialMessages(nearestCity) {
+    return fetch(`${config.apiUrl}/database-messages?nearestCity=${nearestCity}`)
         .then(response => response.json())
 }

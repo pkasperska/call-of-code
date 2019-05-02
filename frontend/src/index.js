@@ -33,7 +33,7 @@ const theme = createMuiTheme({
     const { latitude, longitude } = coords;
     getNearestCity(longitude, latitude).then(({ nearestCity }) => {
       const AppRouter = subscribe({ topic: nearestCity })(_AppRouter);
-      getInitialMessages().then(() => {
+      getInitialMessages(nearestCity).then(() => {
       ReactDOM.render(
        <MuiThemeProvider theme={theme}>
         <Connector mqttProps="ws://localhost:1884">
