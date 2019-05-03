@@ -46,3 +46,13 @@ node db.js
 ```
 
 **Task list:** https://trello.com/b/BM4951xu/call-of-code
+
+**Screenshots:**
+
+<div align="center">
+<img src="screenshots/mobiledesktop.png" height="400"/>
+<img src="screenshots/messagelist.png" height="400"/>
+<img src="screenshots/message.png" height="400"/>
+<img src="screenshots/createnewmessage.png" height="400"/>
+<img src="screenshots/createmessageerror.png" height="400"/>
+ </div>
