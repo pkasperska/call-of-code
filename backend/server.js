@@ -59,3 +59,5 @@ api.get("/database-messages", async (request, response) => {
   const messagesDB = await getFromDB(request.query.nearestCity);
   response.send(messagesDB);
 });
+
+module.exports = {pickCityForLocation, countDistance, api}
