@@ -13,6 +13,7 @@ import TextField from "@material-ui/core/TextField";
 import classNames from "classnames";
 import styles from "./FullScreenDialog.module.scss";
 import { mqtt, topic } from "../../providers/mqtt.provider";
+import { getDate, getTime } from "../../date.converter"
 
 const style = {
   appBar: {
@@ -20,20 +21,19 @@ const style = {
   },
   flex: {
     flex: 1
-  },
+  }
 };
 function renderTransition(props) {
   return <Slide direction="up" {...props} />;
 }
 
 const initialState = {
-    title: "",
-    message: "",
-    titleError: "",
-    messageError: ""
-}
+  title: "",
+  message: "",
+  titleError: "",
+  messageError: ""
+};
 class FullScreenDialog extends React.Component {
-
   state = initialState;
 
   static propTypes = {
@@ -42,20 +42,24 @@ class FullScreenDialog extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    const isValid = this.validate()
+    const isValid = this.validate();
     const date = new Date();
 
     if (isValid) {
-    this.setState(initialState);
-    mqtt.publish(topic, JSON.stringify({...this.state, 
-      longitude: this.props.longitude, 
-      latitude: this.props.latitude,
-      date: this.getDateString(date),
-      time: this.getTimeString(date)
-    }))
-  }
-  }
-  
+      this.setState(initialState);
+      mqtt.publish(
+        topic,
+        JSON.stringify({
+          ...this.state,
+          longitude: this.props.longitude,
+          latitude: this.props.latitude,
+          date: getDate(date),
+          time: getTime(date)
+        })
+      );
+    }
+  };
+
   handleChange = name => event => this.setState({ [name]: event.target.value });
 
   validate = () => {
@@ -63,24 +67,11 @@ class FullScreenDialog extends React.Component {
     const messageError = !this.state.message ? "Podaj treść wiadomości" : "";
 
     if (titleError || messageError) {
-      this.setState({titleError, messageError})
+      this.setState({ titleError, messageError });
       return false;
     }
     return true;
-  }
-
-  getDateString = (date) => {
-      const month = date.getMonth() + 1;
-      return `${date.getDate()}.${
-        month >= 10 ? month : "0" + month
-      }.${date.getFullYear()}`;
-    };
-  
-  getTimeString = (date) => {
-    const minutes = date.getMinutes();
-    return `${date.getHours()}:${
-    minutes >= 9 ? minutes : "0" + minutes}`
-  }
+  };
 
   render() {
     const { classes } = this.props;
@@ -103,10 +94,10 @@ class FullScreenDialog extends React.Component {
                 <CloseIcon />
               </IconButton>
               <Typography variant="h6" color="inherit" className={classes.flex}>
-                Nowa wiadomość
+              Nowa wiadomość
               </Typography>
               <Button color="inherit" type="submit">
-                Wyślij
+              Wyślij
               </Button>
             </Toolbar>
           </AppBar>
@@ -118,7 +109,7 @@ class FullScreenDialog extends React.Component {
               margin="dense"
               fullWidth
               value={this.state.title}
-              onChange={this.handleChange('title')}
+              onChange={this.handleChange("title")}
               required
               inputProps={{ maxLength: 27 }}
             />
@@ -132,7 +123,7 @@ class FullScreenDialog extends React.Component {
               margin="normal"
               fullWidth
               value={this.state.message}
-              onChange={this.handleChange('message')}
+              onChange={this.handleChange("message")}
               required
             />
             <div className={styles.error}>{this.state.messageError}</div>

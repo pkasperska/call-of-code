@@ -38,7 +38,7 @@ class Header extends React.Component {
     classes: PropTypes.object.isRequired
   };
 
-  handleClick = (event) => {
+  goToPreviousPage = (event) => {
     event.preventDefault();
     this.props.history.goBack()
   }
@@ -51,7 +51,7 @@ class Header extends React.Component {
           { this.props.location.pathname !== "/" && (
           <IconButton
             color="inherit"
-            onClick={this.handleClick}
+            onClick={this.goToPreviousPage}
             aria-label="Close"
             className={this.props.classes.button}
           >
